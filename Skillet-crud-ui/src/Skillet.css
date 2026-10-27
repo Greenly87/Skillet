@@ -1,0 +1,351 @@
+/* ---------- Variables de diseño (colores, tipografías) ---------- */
+:root {
+  --ink: #142d20;           /* verde bosque oscuro, fondo de toda la app */
+  --ink-soft: #1e3f2c;      /* verde de apoyo, tonos intermedios */
+  --paper: #faf6ec;         /* marfil cálido, fondo de tarjetas y modal */
+  --paper-dim: #f0e9d8;     /* marfil más apagado, para detalles sutiles */
+  --amber: #d9a441;         /* dorado, botón principal y "busca" */
+  --amber-deep: #b8842c;    /* dorado oscuro, hover del botón */
+  --teal: #6b5b8c;
+  --teal-deep: #4a3e63;     /* verde oscuro, texto de "ofrece" */
+  --clay: #b5533f;          /* rojo ladrillo, solo para eliminar */
+  --sage: #5a9270;          /* verde salvia, estado "Disponible" */
+  --line: rgba(20, 45, 32, 0.14);
+  --shadow: 0 12px 28px rgba(20, 45, 32, 0.16);
+}
+
+/* ---------- Contenedor general de la app ---------- */
+.skillet-app {
+  min-height: 100vh;
+  background: var(--ink);
+  font-family: "Inter", -apple-system, sans-serif;
+  color: var(--ink);
+  padding-bottom: 4rem;
+}
+
+/* ---------- Encabezado tipo "hero" ---------- */
+.skillet-hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3.5rem 1.5rem 4.5rem;
+}
+
+.skillet-hero-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Nombre grande "Skillet" en tipografía serif con carácter */
+.skillet-wordmark {
+  font-family: "Fraunces", serif;
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1;
+}
+
+.skillet-tagline {
+  font-size: 1.05rem;
+  color: rgba(251, 247, 240, 0.72);
+  max-width: 46ch;
+  margin: 0.9rem 0 0;
+  line-height: 1.5;
+}
+
+/* Fila de estadísticas reales (total de intercambios, disponibles) */
+.skillet-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.2rem;
+  flex-wrap: wrap;
+}
+
+.skillet-stat-value {
+  font-family: "Fraunces", serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--amber);
+  line-height: 1;
+}
+
+.skillet-stat-label {
+  font-size: 0.82rem;
+  color: rgba(251, 247, 240, 0.6);
+  margin-top: 0.35rem;
+}
+
+/* ---------- Contenido principal (debajo del hero) ---------- */
+.skillet-body {
+  max-width: 960px;
+  margin: -2.5rem auto 0; /* se monta encima del hero para dar profundidad */
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+/* Barra con el buscador y el botón de agregar */
+.skillet-toolbar {
+  background: var(--paper);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.skillet-search {
+  flex: 1;
+  min-width: 220px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: white;
+}
+
+.skillet-search:focus {
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
+}
+
+.skillet-add-btn {
+  background: var(--amber);
+  color: var(--ink);
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.skillet-add-btn:hover {
+  background: var(--amber-deep);
+}
+
+/* ---------- Cuadrícula de tarjetas ---------- */
+.skillet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.1rem;
+  margin-top: 1.6rem;
+}
+
+/* Cada tarjeta representa un intercambio */
+.skillet-card {
+  background: var(--paper);
+  border-radius: 16px;
+  padding: 1.4rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.skillet-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Círculo con las iniciales del estudiante */
+.skillet-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-family: "Fraunces", serif;
+  flex-shrink: 0;
+}
+
+.skillet-name {
+  font-weight: 700;
+  font-size: 1.02rem;
+  line-height: 1.2;
+}
+
+.skillet-contact {
+  font-size: 0.82rem;
+  color: rgba(27, 26, 46, 0.55);
+}
+
+/* Fila "ofrece" / "busca" dentro de la tarjeta */
+.skillet-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skillet-tag-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+}
+
+.skillet-tag-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(27, 26, 46, 0.45);
+  min-width: 3.6rem;
+}
+
+.skillet-tag-offer {
+  color: var(--teal-deep);
+  font-weight: 600;
+}
+
+.skillet-tag-want {
+  color: var(--amber-deep);
+  font-weight: 600;
+}
+
+/* Fila inferior: horas disponibles y estado */
+.skillet-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 0.8rem;
+}
+
+.skillet-hours {
+  font-size: 0.85rem;
+  color: rgba(27, 26, 46, 0.6);
+}
+
+/* Insignia de estado (Disponible / En proceso / Completado) */
+.skillet-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.skillet-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.skillet-status--disponible { background: rgba(107, 143, 113, 0.15); color: var(--sage); }
+.skillet-status--disponible .skillet-status-dot { background: var(--sage); }
+
+.skillet-status--proceso { background: rgba(230, 149, 28, 0.18); color: var(--amber-deep); }
+.skillet-status--proceso .skillet-status-dot { background: var(--amber-deep); }
+
+.skillet-status--completado { background: rgba(8, 226, 19, 0.08); color: rgba(27, 26, 46, 0.55); }
+.skillet-status--completado .skillet-status-dot { background: rgba(12, 192, 6, 0.425); }
+
+/* Botones de editar/eliminar dentro de la tarjeta */
+.skillet-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.skillet-icon-btn {
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+
+.skillet-icon-btn:hover {
+  border-color: var(--teal);
+}
+
+.skillet-icon-btn--danger:hover {
+  border-color: var(--clay);
+  color: var(--clay);
+}
+
+/* ---------- Mensaje cuando no hay resultados ---------- */
+.skillet-empty {
+  background: var(--paper);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  margin-top: 1.6rem;
+}
+
+.skillet-empty-title {
+  font-family: "Fraunces", serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.skillet-empty-text {
+  color: rgba(27, 26, 46, 0.6);
+  font-size: 0.95rem;
+}
+
+/* ---------- Ajustes del modal de Bootstrap para que combine con el diseño ---------- */
+.skillet-modal .modal-content {
+  border-radius: 16px;
+  border: none;
+  font-family: "Inter", sans-serif;
+}
+
+.skillet-modal .modal-header {
+  border-bottom: 1px solid var(--line);
+}
+
+.skillet-modal .modal-title {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+}
+
+.skillet-modal .form-control,
+.skillet-modal select.form-control {
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+}
+
+.skillet-modal .form-control:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(31, 111, 120, 0.15);
+}
+
+.skillet-modal .btn-primary {
+  background: var(--amber);
+  border: none;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.skillet-modal .btn-primary:hover {
+  background: var(--amber-deep);
+}
+
+.skillet-modal .btn-secondary {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+/* ---------- Ajustes para pantallas pequeñas (celular) ---------- */
+@media (max-width: 560px) {
+  .skillet-stats { gap: 1.6rem; }
+  .skillet-body { margin-top: -1.8rem; }
+}
